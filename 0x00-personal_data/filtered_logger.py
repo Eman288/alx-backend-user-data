@@ -8,6 +8,17 @@ import re
 import logging
 
 
+PII_FIELDS = ("name", "email", "phone", "ssn", "password")
+
+def get_logger() -> logging.Logger:
+    logger = logging.getLogger("user_data")
+    logger.SetLevel(logging.INFO)
+    logger.propagate = False
+    handler = logging.StreamHandler()
+    handler.setFormatter(RedactingFormatter(fields=PII_FIELDS))
+    logger.addHandler(handler)
+    return logger
+
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class
         """
