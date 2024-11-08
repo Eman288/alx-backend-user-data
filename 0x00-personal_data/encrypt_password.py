@@ -5,4 +5,7 @@ import bcrypt
 
 
 def hash_password(password: str) -> bytes:
+    """
+    a function to hash the password and return the hashed one
+    """
     return bcrypt.hashpw(b"{password}}", bcrypt.gensalt(rounds=12))
