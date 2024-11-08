@@ -10,6 +10,7 @@ def hash_password(password: str) -> bytes:
     """
     return bcrypt.hashpw(b"{password}", bcrypt.gensalt(rounds=12))
 
+
 def is_valid(hashed_password: bytes, password: str) -> bool:
     """
     a function to check if the password provided is correct or not
